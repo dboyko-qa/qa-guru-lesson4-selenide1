@@ -1,6 +1,5 @@
 package ru.boyko.darya;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +12,8 @@ public class SelenideSoftAssertionsPageTest {
     public void softAssertionsTest(){
         open("https://github.com/selenide/selenide");
         $("#wiki-tab").click();
-        SelenideElement softAssertionsElement = $("#wiki-body").$(byTextCaseInsensitive("soft assertions"));
+        $("#wiki-pages-box").$(withTextCaseInsensitive("Show 2 more pages")).click();
+        SelenideElement softAssertionsElement = $("#wiki-pages-box").$(byTextCaseInsensitive("SoftAssertions"));
         softAssertionsElement.should(exist);
         softAssertionsElement.click();
         //search JUnit5 code example assuming by the header. Assume that given code corresponds to the header
